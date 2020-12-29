@@ -6,11 +6,13 @@
 //  Copyright: Kuwait Codes 2020 code.kw
 
 import SwiftUI
+import MobileCoreServices
 
 struct Calculator: View {
     // MARK: - Add states here
+    @State var showingPopup = false
     @State var num : String = ""
-    
+    @State var s : String = ""
     var body: some View {
         ZStack{
             Color.black.edgesIgnoringSafeArea(.all)
@@ -21,6 +23,10 @@ struct Calculator: View {
                     Text(num)
                         .modifier(TitleModifier())
                         .animation(.easeIn(duration: 0.1))
+                        .onLongPressGesture(minimumDuration: 0.1){
+                            UIPasteboard.general.string = num
+                            showingPopup = true
+                        }
                 }
                 HStack{
                     Text("C").modifier(ButtonModifier(type: .gray))
@@ -87,10 +93,20 @@ struct Calculator: View {
                         }
                     Text("=").modifier(ButtonModifier(type: .orange))
                 }
+                
             }
             .padding()
+            
         }
+        .popup(isPresented: $showingPopup, type: .floater(), position: .top, autohideIn: 2) {
+                    HStack {
+                        Text("Copied")
+                    }
+                    .frame(width: 200, height: 60)
+                    .background(Color(red: 1, green: 1, blue: 1))
+                    .cornerRadius(30.0)
     }
+}
 }
 
 /** # Don't touch this code at all
@@ -140,7 +156,9 @@ struct Zero: ViewModifier{
 
 struct Calculator_Previews: PreviewProvider {
     static var previews: some View {
-        Calculator()
-            .previewDevice("iPhone 11")//.environment(\.colorScheme, .dark)
+        Group {
+            Calculator()
+                .previewDevice("iPhone 11")
+        }//.environment(\.colorScheme, .dark)
     }
 }

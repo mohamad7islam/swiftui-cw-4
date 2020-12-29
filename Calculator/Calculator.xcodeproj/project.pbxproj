@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D16EABFB259ABE9200FEBDD4 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EABFA259ABE9200FEBDD4 /* PopupView.swift */; };
 		D201EB212592BECA009746FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D201EB202592BECA009746FB /* AppDelegate.swift */; };
 		D201EB232592BECA009746FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D201EB222592BECA009746FB /* SceneDelegate.swift */; };
 		D201EB252592BECA009746FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D201EB242592BECA009746FB /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D16EABFA259ABE9200FEBDD4 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		D201EB1D2592BECA009746FB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D201EB202592BECA009746FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D201EB222592BECA009746FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				D201EB202592BECA009746FB /* AppDelegate.swift */,
 				D201EB222592BECA009746FB /* SceneDelegate.swift */,
 				D201EB242592BECA009746FB /* ContentView.swift */,
+				D16EABFA259ABE9200FEBDD4 /* PopupView.swift */,
 				D201EB262592BECB009746FB /* Assets.xcassets */,
 				D201EB2B2592BECB009746FB /* LaunchScreen.storyboard */,
 				D201EB2E2592BECB009746FB /* Info.plist */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D201EB212592BECA009746FB /* AppDelegate.swift in Sources */,
+				D16EABFB259ABE9200FEBDD4 /* PopupView.swift in Sources */,
 				D201EB232592BECA009746FB /* SceneDelegate.swift in Sources */,
 				D201EB252592BECA009746FB /* ContentView.swift in Sources */,
 			);
