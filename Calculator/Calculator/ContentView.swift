@@ -13,6 +13,8 @@ struct Calculator: View {
     @State var showingPopup = false
     @State var num : String = ""
     @State var s : String = ""
+    @State var temp : Double = 0
+    @State var operation = ""
     var body: some View {
         ZStack{
             Color.black.edgesIgnoringSafeArea(.all)
@@ -36,6 +38,11 @@ struct Calculator: View {
                     Text("±").modifier(ButtonModifier(type: .gray))
                     Text("%").modifier(ButtonModifier(type: .gray))
                     Text("÷").modifier(ButtonModifier(type: .orange))
+                        .onTapGesture {
+                                temp = Double(num)!
+                                operation = "÷"
+                                num = ""
+                        }
                 }
                 HStack{
                     Text("7").modifier(ButtonModifier(type: .gray))
@@ -51,6 +58,11 @@ struct Calculator: View {
                             num.append("9")
                         }
                     Text("×").modifier(ButtonModifier(type: .orange))
+                        .onTapGesture {
+                                temp = Double(num)!
+                                operation = "*"
+                                num = ""
+                        }
                 }
                 HStack{
                     Text("4").modifier(ButtonModifier(type: .gray))
@@ -66,6 +78,11 @@ struct Calculator: View {
                             num.append("6")
                         }
                     Text("-").modifier(ButtonModifier(type: .orange))
+                        .onTapGesture {
+                                temp = Double(num)!
+                                operation = "-"
+                                num = ""
+                        }
                 }
                 HStack{
                     Text("1").modifier(ButtonModifier(type: .gray))
@@ -81,6 +98,11 @@ struct Calculator: View {
                             num.append("3")
                         }
                     Text("+").modifier(ButtonModifier(type: .orange))
+                        .onTapGesture {
+                                temp = Double(num)!
+                                operation = "+"
+                                num = ""
+                        }
                 }
                 HStack{
                     Text("0").modifier(Zero())
@@ -92,6 +114,21 @@ struct Calculator: View {
                             num.append(".")
                         }
                     Text("=").modifier(ButtonModifier(type: .orange))
+                        .onTapGesture {
+                            switch operation {
+                            case "*":
+                                num = String(temp * Double(num)!)
+                            case "÷":
+                                num = String(temp / Double(num)!)
+                            case "+":
+                                num = String(temp + Double(num)!)
+                            case "-":
+                                num = String(temp - Double(num)!)
+                            default:
+                                break
+                            }
+                            
+                        }
                 }
                 
             }
