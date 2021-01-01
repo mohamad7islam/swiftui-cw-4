@@ -7,9 +7,18 @@
 
 import SwiftUI
 import MobileCoreServices
-
+    
 struct Calculator: View {
     // MARK: - Add states here
+
+    @State var isDragging = false
+
+        var drag: some Gesture {
+            DragGesture()
+                .onChanged { _ in self.isDragging = true }
+                .onEnded { _ in self.isDragging = false }
+        }
+    
     @State var showingPopup = false
     @State var num : String = ""
     @State var s : String = ""
@@ -25,6 +34,12 @@ struct Calculator: View {
                     Text(num)
                         .modifier(TitleModifier())
                         .animation(.easeIn(duration: 0.1))
+                        .gesture(DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+                                            .onEnded({ value in
+                                                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+                                                    num = String(num.dropLast())
+                                                }
+                                            }))
                         .onLongPressGesture(minimumDuration: 0.1){
                             UIPasteboard.general.string = num
                             showingPopup = true
